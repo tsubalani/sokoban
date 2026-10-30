@@ -1,0 +1,14 @@
+CREATE DATABASE IF NOT EXISTS sokoban;
+USE sokoban;
+CREATE TABLE IF NOT EXISTS users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(30) NOT NULL UNIQUE,
+  password_hash VARCHAR(255) NOT NULL
+);
+CREATE TABLE IF NOT EXISTS progress (
+  user_id INT NOT NULL,
+  level INT NOT NULL,
+  moves INT NOT NULL,
+  PRIMARY KEY (user_id, level),
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);

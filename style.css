@@ -1,0 +1,35 @@
+:root { --ink:#000; --panel:#17130f; --line:#3a2f26; --text:#f3ece2; --hat:#f2b705; --crate:#2f6fd0; --brick:#8c3b27; }
+* { box-sizing: border-box; }
+body { margin:0; background:var(--ink); color:var(--text); font:16px/1.5 "Trebuchet MS", Verdana, sans-serif; }
+h1, h2 { font-family: Impact, "Arial Black", sans-serif; font-weight:400; letter-spacing:.03em; margin:0 0 12px; }
+h1 { color:var(--hat); font-size:2rem; }
+a { color:var(--hat); }
+.wrap { max-width:720px; margin:0 auto; padding:16px; }
+.wrap header { display:flex; align-items:center; gap:16px; margin-bottom:8px; }
+.wrap header h1 { margin:0; flex:1; }
+.card { background:var(--panel); border:2px solid var(--line); border-left:8px solid var(--brick); padding:20px; margin:16px 0; }
+.narrow { max-width:380px; margin:12vh auto; }
+label { display:block; margin-bottom:12px; }
+input { display:block; width:100%; padding:10px; margin-top:4px; background:#000; color:var(--text); border:2px solid var(--line); font:inherit; }
+input:focus, .btn:focus-visible, .levels a:focus-visible { outline:3px solid var(--hat); outline-offset:2px; }
+.btn { display:inline-block; padding:10px 22px; background:var(--hat); color:#000; border:0; font:700 1rem "Trebuchet MS", sans-serif; text-decoration:none; cursor:pointer; }
+.btn.ghost { background:transparent; color:var(--text); border:2px solid var(--line); }
+.err { color:#ff8a70; }
+.levels { display:flex; flex-wrap:wrap; gap:6px; margin-top:16px; }
+.levels a { width:38px; padding:6px 0; text-align:center; background:#000; border:2px solid var(--crate); text-decoration:none; color:var(--text); }
+table { width:100%; border-collapse:collapse; }
+th, td { text-align:left; padding:6px 8px; border-bottom:1px solid var(--line); }
+.demo { position:relative; width:240px; height:48px; background:#000; margin-bottom:12px; overflow:hidden; }
+.demo i { position:absolute; top:0; left:0; width:48px; height:48px; }
+.demo .goal { left:192px; border:3px solid var(--hat); transform:scale(.55); }
+.demo .crate { background:var(--crate); border:4px solid #173f85; animation:push 4s infinite; }
+.demo .man { background:linear-gradient(var(--hat) 0 30%, #f0c18f 30% 55%, #e8741a 55%); border-radius:40% 40% 8% 8%; animation:walk 4s infinite; width:34px; margin-left:7px; }
+@keyframes walk { 0%{transform:translateX(0)} 25%{transform:translateX(48px)} 50%{transform:translateX(96px)} 75%,92%{transform:translateX(144px)} 93%,100%{transform:translateX(0)} }
+@keyframes push { 0%,25%{transform:translateX(96px)} 50%{transform:translateX(144px)} 75%,92%{transform:translateX(192px)} 93%,100%{transform:translateX(96px)} }
+.play { display:flex; flex-direction:column; align-items:center; padding:12px; }
+.hud { display:flex; gap:16px; align-items:center; margin-bottom:12px; }
+canvas { border:3px solid var(--line); }
+.overlay { position:fixed; inset:0; background:rgba(0,0,0,.85); display:flex; align-items:center; justify-content:center; }
+.overlay[hidden] { display:none; }
+.overlay .card { margin:0; text-align:center; }
+@media (prefers-reduced-motion:reduce) { .demo i { animation:none; } .demo .crate { transform:translateX(96px); } }

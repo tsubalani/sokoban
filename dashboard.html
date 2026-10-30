@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block body %}
+<main class="wrap">
+  <header><h1>Sokoban</h1><span>{{ user }}</span><a class="btn ghost" href="/logout">Log out</a></header>
+  <section class="card">
+    <h2>Level {{ level }} of 50</h2>
+    <a class="btn" href="/game?level={{ level }}">Start game</a>
+    <div class="levels">{% for n in range(1, level + 1) %}<a href="/game?level={{ n }}">{{ n }}</a>{% endfor %}</div>
+  </section>
+  <section class="card">
+    <h2>How to play</h2>
+    <div class="demo"><i class="goal"></i><i class="crate"></i><i class="man"></i></div>
+    <p>Use the arrow keys to push every crate onto a yellow goal. You can push one crate at a time, and you can't pull.</p>
+  </section>
+  <section class="card">
+    <h2>Leaderboard</h2>
+    {% if board %}
+    <table><tr><th>Player</th><th>Levels</th><th>Moves</th></tr>
+    {% for r in board %}<tr><td>{{ r.username }}</td><td>{{ r.levels }}</td><td>{{ r.moves }}</td></tr>{% endfor %}
+    </table>
+    {% else %}<p>No scores yet. Finish a level to be first.</p>{% endif %}
+  </section>
+</main>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block body %}
+<main class="play">
+  <div class="hud">
+    <a class="btn ghost" href="/dashboard">Dashboard</a>
+    <span>Level {{ level }}</span><span>Moves: <b id="moves">0</b></span>
+    <button class="btn ghost" id="restart">Restart</button>
+  </div>
+  <canvas id="board" data-level="{{ level }}"></canvas>
+  <div id="win" class="overlay" hidden>
+    <div class="card narrow"><h2>Level cleared</h2><p id="winText"></p><button class="btn" id="next">Next level</button></div>
+  </div>
+</main>
+<script src="{{ url_for('static', filename='js/levels.js') }}"></script>
+<script src="{{ url_for('static', filename='js/game.js') }}"></script>
+{% endblock %}
